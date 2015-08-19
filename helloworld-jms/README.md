@@ -1,7 +1,7 @@
 helloworld-jms: Helloworld JMS Example
 ======================
-Author: AMQ Team
-Level: Beginner  
+Author: AMQ Team   
+Level: Beginner    
 Technologies: JMS  
 Summary: The `helloworld-jms` quickstart demonstrates the use of the JMS API with JBoss A-MQ. 
 Target Product: JBoss A-MQ  
@@ -12,9 +12,7 @@ What is it?
 
 The `helloworld-jms` quickstart demonstrates the use of the JMS API with Red Hat JBoss A-MQ.
 
-It contains a single main line with a message producer that sends a message and a consumer that
-receives the same message.
-
+It contains a single main line with a message producer that sends a message to a queue named `queue` and a consumer that receives that message.
 
 System requirements
 -------------------
@@ -34,6 +32,7 @@ This quickstart uses secured interfaces and requires that you create the followi
 | admin| admin | admin |
 
 To add the application user, in the A-MQ shell, type the following command:
+
         amq:create-admin-user --new-user admin --new-user-password admin --new-user-role admin
 
 
@@ -43,8 +42,8 @@ Start the JBoss A-MQ Server
 1. Open a command prompt and navigate to the root of the JBoss A-MQ directory.
 2. The following shows the command line to start the server with the full profile:
 
-        For Linux:   EAP_HOME/bin/amq
-        For Windows: EAP_HOME\bin\amq
+        For Linux:   AMQ_HOME/bin/amq
+        For Windows: AMQ_HOME\bin\amq
 
 
 Build and Execute the Quickstart
@@ -58,15 +57,28 @@ To run the quickstart from the command line:
 
         cd PATH_TO_QUICKSTARTS/helloworld-jms
 
-3. Type the following command to compile and execute the quickstart:
+3. Type the following command to compile the quickstart:
 
-        mvn clean compile exec:java
+        mvn clean package dependency:copy-dependencies -DincludeScope=runtime -DskipTests
+
+4. Type the following command to execute the quickstart:
+
+        For Linux:   java -cp "target/classes/:target/dependency/*" org.jboss.amq.quickstarts.jms.HelloWorld
+        For Windows: java -cp "target\classes\;target\dependency*" org.jboss.amq.quickstarts.jms.HelloWorld 
 
  
 Investigate the Console Output
 -------------------------
 
 If the Maven command is successful, with the default configuration you will see output similar to this:
+        Hello world!
+        
+Investigate the destination statistics on the JBoss A-MQ console
+-------------------------
+Using the JBoss A-MQ shell you can note the enqueue and dequeue count using the destination statistics (dstat) command. 
+In the A-MQ shell, type the following command:
+
+        activemq:dstat queues
 
 
 Run the Quickstart in Red Hat JBoss Developer Studio or Eclipse
