@@ -3,7 +3,7 @@ helloworld-jms: Helloworld JMS Example
 Author: AMQ Team   
 Level: Beginner    
 Technologies: JMS  
-Summary: The `helloworld-jms` quickstart demonstrates the use of the JMS API with JBoss A-MQ. 
+Summary: The `helloworld-jms` quickstart demonstrates the use of the JMS API with JBoss A-MQ.    
 Target Product: JBoss A-MQ  
 Source: <https://github.com/jboss-developer/jboss-amq-quickstarts/>  
 
@@ -20,6 +20,13 @@ System requirements
 The application this project produces is designed to be run against Red Hat JBoss A-MQ 6.2 or later. 
 
 All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven 3.1.1 or later. 
+
+
+Use of AMQ_HOME
+---------------
+
+In the following instructions, replace `AMQ_HOME` with the actual path to your JBoss A-MQ installation.   
+
 
 Start the JBoss A-MQ Server
 --------------------------
