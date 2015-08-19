@@ -17,8 +17,9 @@ Be sure to read this entire document before you attempt to work with the quickst
 
 * [Configure Maven](https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_MAVEN_JBOSS_EAP7.md#configure-maven-to-build-and-deploy-the-quickstarts): How to configure the Maven repository for use by the quickstarts.
 
-
-[TOC-quickstart]
+Use of AMQ_HOME Variable
+------------------------
+The quickstart README files use the *replaceable* value `AMQ_HOME` to denote the path to the JBoss A-MQ installation. When you encounter this value in a README file, be sure to replace it with the actual path to your JBoss A-MQ installation. 
 
 
 Suggested Approach to the Quickstarts
@@ -45,10 +46,19 @@ Run the Quickstarts
 
 The root folder of each individual quickstart contains a README file with specific details on how to build and run the example. In most cases you do the following:
 
-* [Start the JBoss A-MQ Server]
+* [Start the JBoss A-MQ Server](#start-the-jboss-a-mq-server)
 * [Build the quickstarts](#build-the-quickstarts)
 
            
+### Start the JBoss A-MQ Server
+
+1. Open a command prompt and navigate to the root of the JBoss A-MQ directory.
+2. The following shows the command line to start the server with the full profile:
+
+        For Linux:   AMQ_HOME/bin/amq
+        For Windows: AMQ_HOME\bin\amq
+
+
 ### Build the Quickstarts
 
 See the README file in each individual quickstart folder for specific details and information on how to run and access the example. 
