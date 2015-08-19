@@ -1,10 +1,10 @@
 helloworld-jms: Helloworld JMS Example
 ======================
-Author: AMQ Team   
-Level: Beginner    
+Author: AMQ Team  
+Level: Beginner  
 Technologies: JMS  
-Summary: The `helloworld-jms` quickstart demonstrates the use of the JMS API with JBoss A-MQ.    
-Target Product: JBoss A-MQ  
+Summary: The `helloworld-jms` quickstart demonstrates the use of the Java Messaging Service API with JBoss A-MQ.  
+Target Product: JBoss A-MQ   
 Source: <https://github.com/jboss-developer/jboss-amq-quickstarts/>  
 
 What is it?
