@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.amq.quickstart.jms;
+package org.jboss.amq.quickstarts.jms;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
