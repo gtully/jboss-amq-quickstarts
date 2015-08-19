@@ -21,21 +21,6 @@ The application this project produces is designed to be run against Red Hat JBos
 
 All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven 3.1.1 or later. 
 
-
-Add an Application User
------------------------
-
-This quickstart uses secured interfaces and requires that you create the following application user to access the running application. 
-
-| **UserName** | **Password** | **Roles** |
-|:-----------|:-----------|:-----------|
-| admin| admin | admin |
-
-To add the application user, in the A-MQ shell, type the following command:
-
-        amq:create-admin-user --new-user admin --new-user-password admin --new-user-role admin
-
-
 Start the JBoss A-MQ Server
 --------------------------
 
@@ -44,6 +29,20 @@ Start the JBoss A-MQ Server
 
         For Linux:   AMQ_HOME/bin/amq
         For Windows: AMQ_HOME\bin\amq
+
+
+Add an Application User
+-----------------------
+
+This quickstart uses secured interfaces and requires that you create the following application user to allow access to the A-MQ server. 
+
+| **UserName** | **Password** | **Roles** |
+|:-----------|:-----------|:-----------|
+| admin| admin | admin |
+
+To add the application user, in the A-MQ shell, type the following command:
+
+        amq:create-admin-user --new-user admin --new-user-password admin --new-user-role admin
 
 
 Build and Execute the Quickstart
