@@ -53,7 +53,7 @@ The root folder of each individual quickstart contains a README file with specif
 ### Start the JBoss A-MQ Server
 
 1. Open a command prompt and navigate to the root of the JBoss A-MQ directory.
-2. The following shows the command line to start the server with the full profile:
+2. The following shows the command line to start the server in the foregound with a command shell.
 
         For Linux:   AMQ_HOME/bin/amq
         For Windows: AMQ_HOME\bin\amq
