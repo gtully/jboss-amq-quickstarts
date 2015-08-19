@@ -32,7 +32,7 @@ Start the JBoss A-MQ Server
 --------------------------
 
 1. Open a command prompt and navigate to the root of the JBoss A-MQ directory.
-2. The following shows the command line to start the server with the full profile:
+2. The following shows the command line to start the server in the foregound with a command shell. 
 
         For Linux:   AMQ_HOME/bin/amq
         For Windows: AMQ_HOME\bin\amq
@@ -44,8 +44,8 @@ Add an Application User
 This quickstart uses secured interfaces and requires that you create the following application user to allow access to the A-MQ server. 
 
 | **UserName** | **Password** | **Roles** |
-|:-----------|:-----------|:-----------|
-| admin| admin | admin |
+|:-------------|:-------------|:----------|
+| admin        | admin        | admin     |
 
 To add the application user, in the A-MQ shell, type the following command:
 
