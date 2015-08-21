@@ -1,18 +1,20 @@
-helloworld-jms: Helloworld JMS Example
+helloworld-jms-amqp: Helloworld JMS Example
 ======================
 Author: AMQ Team  
 Level: Beginner  
-Technologies: JMS  
-Summary: The `helloworld-jms` quickstart demonstrates the use of the Java Messaging Service API with JBoss A-MQ.  
+Technologies: JMS, AMQP
+Summary: The `helloworld-jms-amqp` quickstart demonstrates the use of the Java Messaging Service API with AMQP and JBoss A-MQ.
 Target Product: JBoss A-MQ  
 Source: <https://github.com/jboss-developer/jboss-amq-quickstarts/>  
 
 What is it?
 -----------
 
-The `helloworld-jms` quickstart demonstrates the use of the JMS API with Red Hat JBoss A-MQ.
+The `helloworld-jms-amqp` quickstart demonstrates the use of the JMS API with AMQP and Red Hat JBoss A-MQ.
 
-It contains a single main line with a message producer that sends a message to a queue named `queue` and a consumer that receives that message.
+It contains a single jndi properties file that directs the InitialContext lookup in the code from the 'helloworld-jms'
+example to use the qpid-jms-client ConnectionFactory and the AMQP transport on JBoss A-MQ.
+This quickstart has no code! It reuses the code from helloworld-jms. JMS APIs are protocol agnostic.
 
 System requirements
 -------------------
@@ -31,11 +33,43 @@ In the following instructions, replace `AMQ_HOME` with the actual path to your J
 Start the JBoss A-MQ Server
 --------------------------
 
-1. Open a command prompt and navigate to the root of the JBoss A-MQ installation.
+1. Open a command prompt and navigate to the root of the JBoss A-MQ directory.
 2. The following shows the command line to start the server in the foreground with a command shell.
 
         For Linux:   AMQ_HOME/bin/amq
         For Windows: AMQ_HOME\bin\amq
+
+3. Verify the AMQP protocol listener is active on JBoss A-MQ. From the A-MQ shell type the following command:
+
+        activemq:query -QBroker=* --view TransportConnectors
+
+If port 5672 is not in the list proceed to [Add AMQP transport to A-MQ]
+
+
+Add AMQP transport to A-MQ
+--------------------------
+Using a text editor you will modify the JBoss A-MQ xml configuration to add an AMQP transport connector.
+
+1. Open a command prompt and navigate to the root of the JBoss A-MQ installation.
+
+2. Open AMQ_HOME/etc/activemq.xml
+
+3. Navigate to the element called <transportConnectors>, note the existing transportConnector named openwire.
+   Add a new transportConnector using the amqp protocol scheme and using a name of "amqp" as follows.
+
+        <transportConnectors>
+            <transportConnector name="openwire" uri="tcp://0.0.0.0:0?maximumConnections=1000"/>
+            <transportConnector name="amqp" uri="amqp://0.0.0.0:5672"/>
+        </transportConnectors>
+
+4. Restart JBoss A-MQ
+   Note: a simple way to trigger an automatic restart is to 'UNIX touch' the file AMQ_HOME/etc/io.fabric8.mq.fabric.server-broker.cfg
+
+5. Verify the AMQP protocol listener is active on JBoss A-MQ.
+   From the A-MQ shell type the following command:
+
+        activemq:query -QBroker=* --view TransportConnectors
+
 
 
 Add an Application User
