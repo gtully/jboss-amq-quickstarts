@@ -68,7 +68,12 @@ In most cases, you can use the following steps to build the application to test 
 1. Open a command prompt and navigate to the root directory of the quickstart you want to build.
 2. Use this command to build the archive.
 
-            mvn clean install
+            mvn clean package
+
+3. Use this command to execute the example.
+
+            mvn java:exec
+
 
 Use JBoss Developer Studio or Eclipse to Run the Quickstarts
 ------------------------------------------------------------

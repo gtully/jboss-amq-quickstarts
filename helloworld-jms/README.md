@@ -4,7 +4,7 @@ Author: AMQ Team
 Level: Beginner  
 Technologies: JMS  
 Summary: The `helloworld-jms` quickstart demonstrates the use of the Java Messaging Service API with JBoss A-MQ.  
-Target Product: JBoss A-MQ   
+Target Product: JBoss A-MQ  
 Source: <https://github.com/jboss-developer/jboss-amq-quickstarts/>  
 
 What is it?
@@ -65,18 +65,17 @@ To run the quickstart from the command line:
 
 3. Type the following command to compile the quickstart:
 
-        mvn clean package dependency:copy-dependencies -DincludeScope=runtime -DskipTests
+        mvn clean package
 
 4. Type the following command to execute the quickstart:
 
-        For Linux:   java -cp "target/classes/:target/dependency/*" org.jboss.amq.quickstarts.jms.HelloWorld
-        For Windows: java -cp "target\classes\;target\dependency*" org.jboss.amq.quickstarts.jms.HelloWorld 
+        mvn exec:java
 
  
 Investigate the Console Output
 -------------------------
 
-If the Maven command is successful, with the default configuration you will see output similar to this:
+If the Maven command is successful, you will see output similar to this:
         Hello world!
         
 Investigate the destination statistics on the JBoss A-MQ console
