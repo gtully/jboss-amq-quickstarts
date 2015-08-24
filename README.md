@@ -1,6 +1,6 @@
 Red Hat JBoss A-MQ Quickstarts
 ==============================
-Summary: The quickstarts demonstrate Red Hat JBoss A-MQ. They provide small, specific, working examples that can be used as a reference for your own project.  
+Summary: These quickstarts demonstrate Red Hat JBoss A-MQ. They provide small, specific, working examples that can be used as a reference for your own project.  
 
 Introduction
 ------------
