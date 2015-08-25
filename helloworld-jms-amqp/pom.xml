@@ -18,14 +18,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-      <groupId>org.jboss.quickstart.amq</groupId>
-      <artifactId>parent</artifactId>
-      <version>5.11.0.redhat-620133</version>
-      <relativePath>..</relativePath>
-  </parent>
-
+  <groupId>org.jboss.quickstart.amq</groupId>
   <artifactId>helloworld-jms-amqp</artifactId>
+  <version>5.11.0.redhat-620133</version>
+
   <packaging>jar</packaging>
   <name>JBoss A-MQ Quickstart: helloworld-jms-amqp</name>
   <description>Hellworld JMS: Use the JMS API to send and receive a text message over AMQP</description>
@@ -39,25 +35,64 @@
       </license>
   </licenses>
 
+
+  <!-- Activate JBoss FuseSource Release Maven Repository.
+      NOTE: Configuring the Maven repository in the pom.xml file is not a recommended procedure
+      and is only done here to make it easier to use the quickstarts.
+  -->
+  <repositories>
+      <repository>
+          <id>jboss.org-fs-releases</id>
+          <name>JBoss FuseSource Release Repository</name>
+          <url>https://repository.jboss.org/nexus/content/repositories/fs-releases/</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+          <releases>
+              <enabled>true</enabled>
+              <updatePolicy>never</updatePolicy>
+          </releases>
+      </repository>
+  </repositories>
+
   <properties>
-        <version.qpid.jms.client>0.3.0</version.qpid.jms.client>
+      <!-- qpid jms client dependency version -->
+      <version.qpid.jms.client>0.3.0</version.qpid.jms.client>
+
+      <!-- dependent plug-in versions -->
+      <version.exec.plugin>1.2.1</version.exec.plugin>
+
+      <!-- maven-compiler-plugin -->
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <maven.compiler.source>1.8</maven.compiler.source>
+
+      <!-- Explicitly declaring the source encoding eliminates the following message: -->
+      <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
+             resources, i.e. build is platform dependent! -->
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
   </properties>
 
   <dependencies>
 
-    <dependency>
-       <groupId>org.jboss.quickstart.amq</groupId>
-       <artifactId>helloworld-jms</artifactId>
-       <version>${project.version}</version>
-    </dependency>
+      <!-- Import helloworld-jms quickstart. The use of the JMS API
+           does not change so the code jar can be reused as is.
+           This indirection in the jndi.properties file from
+           this quickstart references the qpid-jms dependency
+           below -->
+      <dependency>
+          <groupId>org.jboss.quickstart.amq</groupId>
+          <artifactId>helloworld-jms</artifactId>
+          <version>${project.version}</version>
+      </dependency>
 
-    <!-- Import the qpid-jms dependency to gain access to the jndi provider,
-      jms connection factory and protocol support -->
-    <dependency>
-       <groupId>org.apache.qpid</groupId>
-       <artifactId>qpid-jms-client</artifactId>
-       <version>${version.qpid.jms.client}</version>
-    </dependency>
+      <!-- Import the qpid-jms dependency to gain access to the jndi provider,
+        jms connection factory and protocol support -->
+      <dependency>
+          <groupId>org.apache.qpid</groupId>
+          <artifactId>qpid-jms-client</artifactId>
+          <version>${version.qpid.jms.client}</version>
+      </dependency>
 
   </dependencies>
 
@@ -67,6 +102,7 @@
           <plugin>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>exec-maven-plugin</artifactId>
+              <version>${version.exec.plugin}</version>
               <configuration>
                   <mainClass>org.jboss.amq.quickstarts.jms.HelloWorld</mainClass>
               </configuration>
