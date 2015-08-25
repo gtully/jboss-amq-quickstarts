@@ -12,9 +12,12 @@ What is it?
 
 The `helloworld-jms-amqp` quickstart demonstrates the use of the JMS API with AMQP and Red Hat JBoss A-MQ.
 
-It contains a single jndi properties file that directs the InitialContext lookup in the code from the 'helloworld-jms'
-example to use the qpid-jms-client ConnectionFactory and the AMQP transport on JBoss A-MQ.
-This quickstart has no code! It reuses the code from helloworld-jms. JMS APIs are protocol agnostic.
+This quickstart has no code! It reuses the code from the `helloworld-jms` quickstart. 
+It contains a single jndi properties file that directs the InitialContext lookup in the code from the
+'helloworld-jms' example to use the QPID JMS ConnectionFactory and the AMQP transport.
+It is proof that the JMS APIs are protocol agnostic. 
+
+Note the pom.xml dependency on the `helloworld-jms` quickstart jar. Be sure to `mvn install` the helloworld-jms quick start before attempting this one.
 
 System requirements
 -------------------
@@ -93,15 +96,24 @@ To run the quickstart from the command line:
 
 1. Make sure you have started the JBoss A-MQ server. See the instructions in the previous section.
 
-2. Open a command prompt and navigate to the root of the helloworld-jms quickstart directory:
+2. Install the helloworld-jms quickstart. This is necessary because this quickstart has no code, just configuration.
+   Open a command prompt and navigate to the root of the `helloworld-jms` quickstart directory:
 
         cd PATH_TO_QUICKSTARTS/helloworld-jms
+        
+3. Type the following command to install the required dependency in your local maven repository.        
+        
+        mvn install
 
-3. Type the following command to compile the quickstart:
+4. Package this quickstart. Navigate back to the root of the `helloworld-jms-amqp` quickstart directory:
+        
+        cd PATH_TO_QUICKSTARTS/helloworld-jms-amqp
+
+5. Type the following command to package the jndi.properties file.        
 
         mvn clean package
 
-4. Type the following command to execute the quickstart:
+6. Type the following command to execute the quickstart:
 
         mvn exec:java
 
